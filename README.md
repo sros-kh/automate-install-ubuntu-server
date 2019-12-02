@@ -1,0 +1,1 @@
+# automate-install-ubuntu-server
