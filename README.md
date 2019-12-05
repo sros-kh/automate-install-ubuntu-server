@@ -94,3 +94,42 @@ You can either encrypt your password, or pass it over plain text. If you want to
     
     mkpasswd -m sha-512
 
+
+## Advanced options
+### Running custom commands during the installation
+
+In this guide I will copy file from CD to the specific directory and install .deb file before the install finishes.
+
+Get an example file 
+
+[htop](https://hisham.hm/htop/) an interactive process viewer for Unix systems.
+
+    cd /tmp/
+    chmod 755 custom-iso/pool
+    mkdir -p custom-iso/pool/extras
+    wget http://ftp.cn.debian.org/debian/pool/main/h/htop/htop_2.2.0-1+b1_amd64.deb
+    mv htop/htop_2.2.0-1+b1_amd64.deb custom-iso/pool/extras/htop.deb
+
+## Edit preseed/preseed.cfg file
+    
+    cd /tmp/
+    vi custom-iso/preseed/preseed.cfg
+
+Add the contents with preseed.cfg with the following to the end line.
+
+    d-i preseed/late_command string \
+    in-target mkdir /packages; \
+    in-target cp -r /media/cdrom/pool/extras/htop.deb /packages/htop.deb; \
+    in-target dpkg -i /packages/htop.deb
+
+And follow above `Create new ISO` to recreate new IOS.
+
+Note: ``If the package required dependencies it will not install on your system.``
+
+THANK YOU.
+
+
+
+
+
+
