@@ -1,4 +1,4 @@
-# Ubuntu 16.04 auto-Install for UEFI using preseed
+# Ubuntu 16.04 auto-install using preseed
 
 ### Preseeding methods
 As mentioned in the [official installation guide](https://www.debian.org/releases/stable/i386/apb.en.html), there are several ways to feed the preseed file to the installer. And in this guide, I will use preseed via `Adding the preseed file to the installer's initrd.gz`.
